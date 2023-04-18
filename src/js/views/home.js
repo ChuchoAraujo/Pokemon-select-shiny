@@ -21,7 +21,6 @@ export const Home = () => {
 
 	const handleAddFavorites = (character) => {
 		setFavorites([...favorites, character]);
-		console.log([...favorites, character]);
 	}
 
 
@@ -29,9 +28,8 @@ export const Home = () => {
 
 	return (
 		<div className="text-center mt-5">
-			<h1>Rick y Morty</h1>
+			<h1><strong>Chose your character</strong></h1>
 			<div className="m-5">
-				<h2>--- Characters ---</h2>
 				<CardCharacter characters={characters} handleAddFavorites={handleAddFavorites} />
 				<div>
 					<button className="button-pagination"></button>

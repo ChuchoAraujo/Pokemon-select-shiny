@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Context } from "../store/appContext";
 import { useParams } from 'react-router'
+import { AiFillHeart } from 'react-icons/ai';
 
 
 export const CharacterDetails = () => {
@@ -34,7 +35,7 @@ export const CharacterDetails = () => {
                         <button onClick={() => {
                             actions.selectId(oneCharacter);
                             actions.addFavorite();
-                        }} className="btn btn-warning">Agregar a favoritos</button>
+                        }} className="btn btn-danger">Add Fav:  <AiFillHeart/></button>
                     </div>
 
                 </div>
