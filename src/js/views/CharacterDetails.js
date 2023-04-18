@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { Context } from "../store/appContext";
 import { useParams } from 'react-router'
 
 
 export const CharacterDetails = () => {
+    const { store, actions } = useContext(Context);
 
     const { id } = useParams()
 
@@ -29,7 +31,10 @@ export const CharacterDetails = () => {
                         <p>Location:  {oneCharacter.location.name}</p>                      
                         <p>Origin: {oneCharacter.origin.name}</p>
                         <p>Status:  {oneCharacter.status}</p>
-                        <button className="btn btn-warning">Favoritos</button>
+                        <button onClick={() => {
+                            actions.selectId(oneCharacter);
+                            actions.addFavorite();
+                        }} className="btn btn-warning">Agregar a favoritos</button>
                     </div>
 
                 </div>

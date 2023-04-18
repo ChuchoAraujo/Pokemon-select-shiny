@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { AiFillHeart } from 'react-icons/ai';
 
-export const CardCharacter = ({ characters }) => {
+export const CardCharacter = ({ characters, handleAddFavorites }) => {
     return (
         <>
             <div className='container-card'>
@@ -13,6 +14,7 @@ export const CardCharacter = ({ characters }) => {
                                 <p><strong>{character.name}</strong></p>
                                 <p>Species{character.species}</p>
                                 <p>Origin: {character.origin.name}</p>
+                            <button onClick={() => handleAddFavorites(character)} className='btn btn-warning'><AiFillHeart/></button>
                             </div>
 
                         </div>

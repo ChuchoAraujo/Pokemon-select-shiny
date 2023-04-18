@@ -6,6 +6,7 @@ import { CardCharacter } from "./CardCharacter";
 export const Home = () => {
 
 	const [characters, setCharacters] = useState([])
+	const [favorites, setFavorites] = useState([])
 
 	useEffect(() => {
 		const getAllCharacters = async () => {
@@ -18,13 +19,20 @@ export const Home = () => {
 		getAllCharacters();
 	}, [])
 
+	const handleAddFavorites = (character) => {
+		setFavorites([...favorites, character]);
+		console.log([...favorites, character]);
+	}
+
+
+
 
 	return (
 		<div className="text-center mt-5">
 			<h1>Rick y Morty</h1>
 			<div className="m-5">
 				<h2>--- Characters ---</h2>
-				<CardCharacter characters={characters} />
+				<CardCharacter characters={characters} handleAddFavorites={handleAddFavorites} />
 				<div>
 					<button className="button-pagination"></button>
 					<button className="button-pagination"></button>
