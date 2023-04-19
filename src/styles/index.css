@@ -110,12 +110,39 @@ a:hover {
     background-color: rgba(0, 0, 0, 0.822);
 }
 
+/* // EFECTO HOME */
+
 .efecto:hover {
     animation: efecto 0.4s linear both;
     animation: efecto 0.4s linear both;
 }
 
 @keyframes efecto {
+    0% {
+        box-shadow: 0 0 0 0 transparent;
+    }
+
+    100% {
+        box-shadow: -12px -12px 20px -12px rgba(79, 231, 173, 0.7);
+    }
+
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+/* // EFECTO ONE CHARACTER */
+
+.efecto-single {
+    animation: efecto-single 0.4s linear both;
+    animation: efecto-single 0.4s linear both;
+}
+
+@keyframes efecto-single {
     0% {
         box-shadow: 0 0 0 0 transparent;
     }
@@ -173,4 +200,22 @@ a:hover {
 
 .card-body-fav .card-texto p strong {
     font-size: 30px;
+}
+
+.button-fav {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    background-color: rgb(79, 231, 173);
+    font-weight: 700;
+}
+
+.green {
+background-color: rgb(79, 231, 173);;
+}
+
+.green_dark {
+    background-color: rgb(32, 121, 85);
+    color: white;
 }

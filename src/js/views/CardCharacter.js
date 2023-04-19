@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { AiOutlineHeart } from 'react-icons/ai';
 
 
 export const CardCharacter = ({ characters, handleAddFavorites }) => {
@@ -15,7 +16,7 @@ export const CardCharacter = ({ characters, handleAddFavorites }) => {
                                 <p>Species{character.species}</p>
                                 <p>Origin: {character.origin.name}</p>
                             </div>
-
+                            
                         </div>
                     </Link>
                 ))}

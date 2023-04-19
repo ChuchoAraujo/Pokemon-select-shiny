@@ -10,6 +10,12 @@ export const CharacterDetails = () => {
     const { id } = useParams()
 
     const [oneCharacter, setOneCharacter] = useState(null)
+    const [color, setColor] = useState('null')
+
+    const handleClick = () => {
+        setColor('green'); 
+    };
+    const buttonClasses = `button-fav${color === 'green' ? ' green_dark' : ''}`
 
     useEffect(() => {
         const getOneCharacter = async () => {
@@ -23,7 +29,7 @@ export const CharacterDetails = () => {
     return (
         <div className='container-single'>
             {oneCharacter && (
-                <div className='card-body-single'>
+                <div className='card-body-single efecto-single'>
                     <img src={oneCharacter.image} />
                     <div className='card-texto'>
                         <p><strong>{oneCharacter.name}</strong></p>
@@ -32,10 +38,14 @@ export const CharacterDetails = () => {
                         <p>Location:  {oneCharacter.location.name}</p>                      
                         <p>Origin: {oneCharacter.origin.name}</p>
                         <p>Status:  {oneCharacter.status}</p>
-                        <button onClick={() => {
+                        <button 
+                        onClick={() => {
                             actions.selectId(oneCharacter);
                             actions.addFavorite();
-                        }} className="btn btn-success">Add Fav:  <AiFillHeart/></button>
+                            handleClick()
+                        }} 
+                        className={buttonClasses}>Add Fav:  <AiFillHeart /></button>
+                        
                     </div>
 
                 </div>
