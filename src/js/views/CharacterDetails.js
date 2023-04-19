@@ -35,7 +35,7 @@ export const CharacterDetails = () => {
                         <button onClick={() => {
                             actions.selectId(oneCharacter);
                             actions.addFavorite();
-                        }} className="btn btn-danger">Add Fav:  <AiFillHeart/></button>
+                        }} className="btn btn-success">Add Fav:  <AiFillHeart/></button>
                     </div>
 
                 </div>

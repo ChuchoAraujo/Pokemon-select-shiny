@@ -2,10 +2,9 @@
 body {
     background-color: rgba(0, 0, 0, 0.829);
     color: white;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
     font-weight: 400;
     font-size: 16px;
-    
 }
 
 h3 {
@@ -17,9 +16,11 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
 a:hover {
-    color: rgb(243, 231, 119);
-        cursor: pointer;
+    color: rgb(79, 231, 173);
+    font-weight: 700;
+    cursor: pointer;
 }
 
 .container-card {
@@ -42,13 +43,11 @@ a:hover {
     box-shadow: 10px 15px 23px -14px rgba(0, 0, 0, 0.75);
 }
 
-
 .card-body img {
     border-radius: 30px 0 0 30px;
     height: 100%;
     object-fit: cover;
 }
-
 
 .card-texto {
     display: flex;
@@ -58,7 +57,6 @@ a:hover {
     padding: 15px;
     margin: 0;
 }
-
 
 .card-texto p strong {
     font-weight: 900;
@@ -93,7 +91,6 @@ a:hover {
     object-fit: cover;
 }
 
-
 .card-body-single .card-texto {
     display: flex;
     flex-direction: column;
@@ -104,33 +101,76 @@ a:hover {
     margin-left: 40px;
     font-size: 20px;
 }
+
 .card-body-single .card-texto p strong {
     font-size: 30px;
 }
 
 .navColor {
-    background-color: rgba(0, 0, 0, 0.822)
+    background-color: rgba(0, 0, 0, 0.822);
 }
-
 
 .efecto:hover {
     animation: efecto 0.4s linear both;
-    animation: efecto 0.4s linear both
+    animation: efecto 0.4s linear both;
 }
 
 @keyframes efecto {
     0% {
-        box-shadow: 0 0 0 0 transparent
+        box-shadow: 0 0 0 0 transparent;
     }
 
     100% {
-        box-shadow: -12px -12px 20px -12px rgba(255, 255, 255, .55)
+        box-shadow: -12px -12px 20px -12px rgba(79, 231, 173, 0.7);
     }
-        0% {
-            transform: translateY(0)
-        }
-    
-        100% {
-            transform: translateY(-5px)
-        }
+
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+.container-fav {
+    width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    grid-row-gap: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-body-fav {
+    background-color: rgb(63, 63, 63);
+    display: flex;
+    border-radius: 30px;
+    height: 200px;
+    padding: 0;
+    -webkit-box-shadow: 10px 15px 23px -14px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 15px 23px -14px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 15px 23px -14px rgba(0, 0, 0, 0.75);
+}
+
+.card-body-fav img {
+    border-radius: 30px 0 0 30px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body-fav .card-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10px;
+    margin: 0;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.card-body-fav .card-texto p strong {
+    font-size: 30px;
 }

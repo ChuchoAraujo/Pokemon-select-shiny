@@ -6,8 +6,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 		},
 		actions: {
-			selectId: (characterSelected) => {
-				setStore({ idCharacter: characterSelected });
+			selectId: (character) => {
+				setStore({ idCharacter: character });
 				console.log(getStore().idCharacter)
 			},
 			addFavorite: () => {
@@ -15,6 +15,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const newFavorite = store.idCharacter;
 				setStore({ favorites: [...store.favorites, newFavorite] });
 				console.log(getStore().favorites)
+			},
+			removeFavorite: (fav) => {
+				const store = getStore();
+				const updatedArray = store.favorites.filter((favorite) => favorite !== fav);
+				setStore({ favorites: updatedArray });
 			},
 		}
 	};

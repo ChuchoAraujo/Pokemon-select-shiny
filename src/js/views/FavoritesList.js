@@ -1,17 +1,21 @@
 import React, { useContext } from 'react'
 import { Context } from "../store/appContext";
+import { BsFillTrash3Fill } from 'react-icons/bs';
 
 export const FavoritesList = () => {
     const { store, actions } = useContext(Context);
 
 
   return (
-    <div>
-        <h1>Favorites List</h1>
+    <div className='container-fav'>
         {store.favorites.map((fav, index)=> (
-            <div key={index}>
-                <img src={fav.image}/>
-                <p>{fav.name}</p>
+          <div key={index} className='card-body-fav'>
+            <img src={fav.image} />
+            <div className='card-texto'>
+              <p><strong>{fav.name}</strong></p>
+              <button className='btn btn-danger' onClick={() => actions.removeFavorite(fav)}>Delete fav: <BsFillTrash3Fill /></button>
+            </div>
+            
             </div>
         ))}
     </div>
