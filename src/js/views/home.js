@@ -1,53 +1,67 @@
-import React, { useEffect, useState } from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
-import "../../styles/home.css";
-import { CardCharacter } from "./CardCharacter";
+import React, { useContext, useEffect, useState } from 'react'
+import { Context } from "../store/appContext";
+import { useParams } from 'react-router'
+import { AiFillHeart } from 'react-icons/ai';
+
 
 export const Home = () => {
+	const { store, actions } = useContext(Context);
 
-	const [characters, setCharacters] = useState([])
-	const [favorites, setFavorites] = useState([])
-	const [currentPage, setCurrentPage] = useState(1)
-	const [totalPages, setTotalPages] = useState(0)
+	const [pokemon, setPokemon] = useState([]) // all pokemon
+	const [pokemonSelected, setPokemonSelected] = useState(null) // one pokemon
+	const [isShiny, setIsShiny] = useState(false) // hacerlo shiny
 
 	useEffect(() => {
-		const getAllCharacters = async () => {
-			const response = await fetch(`https://rickandmortyapi.com/api/character?page=${currentPage}`)
+		const getAllPokemon = async () => {
+			const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
 			const data = await response.json()
-			// console.log(data)
-			setCharacters(data.results)
-			setTotalPages(data.info.pages)
-		};
+			setPokemon(data.results)
+		}
+		getAllPokemon()
+	}, [])
 
-		getAllCharacters();
-	}, [currentPage])
-
-	const handleAddFavorites = (character) => {
-		setFavorites([...favorites, character]);
+	const handlePokemonChange = async (event) => {
+		const pokemonName = event.target.value // tomar el valor del select en una variable
+		console.log(pokemonName)
+		const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`) // asignamos el valor del select a la url
+		const data = await response.json()
+		setPokemonSelected(data)
 	}
 
-	const handlePrevPage = () => {
-		setCurrentPage(currentPage -1 )
-	}
-
-	const handleNextPage = () => {
-		setCurrentPage(currentPage + 1)
+	const handleShiny = () => {
+		setIsShiny(!isShiny)
+	
 	}
 
 
 
 	return (
-		<div className="text-center mt-5">
-			<h1><strong>Chose your character</strong></h1>
-			<div className="m-5">
-				<CardCharacter characters={characters} handleAddFavorites={handleAddFavorites} />
+		<div className='container text-center'>
+			<h1 className='m-5'>Gotta catch em all</h1>
+			<select className='form-select' onChange={handlePokemonChange}>
+				<option>Select a pokemon</option>
+				{pokemon.map((pokemon, index) => (
+					<option key={index} value={pokemon.name}>{pokemon.name}</option>
+				))}
+			</select>
+
+			{pokemonSelected && (
 				<div>
-					<button onClick={handlePrevPage} className="button-pagination" disabled={currentPage <= 1}>Prev</button>
-					<button onClick={handleNextPage} className="button-pagination" disabled={currentPage >= totalPages}>Next</button>
+					<h1 className='mt-4'>{pokemonSelected.name}</h1>
+					<img
+						src={isShiny ? pokemonSelected.sprites.front_shiny : pokemonSelected.sprites.front_default}
+						alt={pokemonSelected.name}
+						width={200}
+
+					/>
+					<br />
+					<button
+					className='btn btn-dark'
+						onClick={handleShiny}>{isShiny ? 'Make it normal' : 'Give me color!'}</button>
 				</div>
-			</div>
-			
+			)}
 		</div>
 	)
+}
 
-};
+
